@@ -1,22 +1,23 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
 import './App.css';
 
 function App() {
+
+  useEffect(() => {
+    // Create a WorldWindow for the canvas.
+    var wwd = new window.WorldWind.WorldWindow("canvasOne");
+
+    // Add some image layers to the WorldWindow's globe.
+    wwd.addLayer(new window.WorldWind.BMNGOneImageLayer());
+    wwd.addLayer(new window.WorldWind.BMNGLandsatLayer());
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Esta react-app esta hosteada en github pages
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <canvas id="canvasOne" width="1024" height="768">
+          Your browser does not support HTML5 Canvas.
+        </canvas>
       </header>
     </div>
   );
